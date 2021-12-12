@@ -4,6 +4,14 @@ import { ThemeProvider } from "@mui/material";
 import theme from "ui/themes/theme";
 import Head from "next/head";
 import Header from "ui/components/surface/Header";
+import Footer from "ui/components/surface/Footer";
+import { styled } from "@mui/material/styles";
+
+const AppContainer = styled("div")`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -23,8 +31,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link href="/fonts/tw-icons/css/treinaweb-icons.css" rel="stylesheet" />
       </Head>
       <ThemeProvider theme={theme}>
-        <Header />
-        <Component {...pageProps} />
+        <AppContainer>
+          <Header />
+          <Component {...pageProps} />
+          <Footer />
+        </AppContainer>
       </ThemeProvider>
     </>
   );
